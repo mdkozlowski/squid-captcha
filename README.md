@@ -14,7 +14,7 @@ Open `localhost:5000`
 
 ### Python virtualenv
 
-Requires `python>=3.10, <3.11`
+Requires `python>=3.10, <3.14`
 
 ```commandline
 python -m pip install -r requirements.txt
@@ -28,4 +28,12 @@ or
 ```commandline
 docker build -t squid-captcha .
 docker run --rm -it -p 5000:5000 --name squid-captcha squid-captcha
+```
+
+or 
+
+### Pyinstaller binary
+There's no way this works anywhere other than on my own PC but apparently there's supposed to be a windows binary
+```commandline
+./dist/app/app.exe
 ```
