@@ -18,7 +18,7 @@ Requires `python>=3.10, <3.14`
 
 ```commandline
 python -m pip install -r requirements.txt
-gunicorn app:app -b 0.0.0.0:5000 -w 4
+python app.py
 ```
 
 or
