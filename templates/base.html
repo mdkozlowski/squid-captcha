@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squid Captcha</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='simple.css') }}">
+</head>
+<body>
+
+<header>
+
+    <h1><a href="{{ url_for('index') }}">Squid CAPTCHA </a></h1>
+    <p>In each step, select the row of squids that ""feels"" the most random</p>
+    <p>Real humans usually end up picking them correctly</p>
+    <p>Just go by vibes</p>
+    <p>Get 3 or more correct to pass</p>
+
+</header>
+
+<main>
+    <form method="post" action="/secret">
+        {% for step in steps %}
+            {% set steps_loop = loop %}
+            <div class="collapsible2"># {{ steps_loop.index0 + 1 }} </div>
+            <div class="collapsible2-content">
+                {% for group in step %}
+                    <br>
+                    {% set group_loop = loop %}
+                    <input type="radio" class="radio-box"
+                           id="step_{{ steps_loop.index0 }}_{{ group_loop.index0 }}"
+                           name="step_{{ steps_loop.index0 }}_{{ group_loop.index0 }}">
+                    <label for="step_{{ steps_loop.index0 }}_{{ group_loop.index0 }}">
+                        {% for el in group %}
+
+                            {% if el == 1 %}
+                                <img src="{{ url_for('static', filename='happy.png') }}">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='sad.png') }}">
+                            {% endif %}
+
+                        {% endfor %}
+                    </label><br>
+
+                {% endfor %}
+
+            </div>
+
+            <hr>
+        {% endfor %}
+        <label for="seed">Seed</label>
+        <input name="seed" id="seed" value="{{ seed }}" readonly>
+
+        <input type="submit" value="Submit">
+    </form>
+</main>
+
+<footer>
+    <p><a href="https://github.com/mdkozlowski">Github @mdkozlowski</a></p>
+</footer>
+<script>
+    var coll = document.getElementsByClassName("collapsible2");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("collapsible2-active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

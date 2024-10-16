@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "squid-captcha"
+version = "0.1.0"
+description = ""
+authors = ["Marcin Kozłowski <marcin.kozlowski122@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.3"
+numpy = "^2.1"
+pandas = "^2.0"
+scipy = "^1.14"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
