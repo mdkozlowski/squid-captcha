@@ -1,6 +1,5 @@
 import numpy as np
 import scipy.stats as stats
-import pandas as pd
 
 N_ITEMS = 7
 N_GROUPS = 4
