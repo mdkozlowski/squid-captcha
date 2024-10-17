@@ -11,7 +11,7 @@ COPY templates/ /app/templates/
 COPY pyproject.toml poetry.lock app.py requirements.txt  /app/
 
 # Upgrade pip and install Python dependencies
-RUN pip3 install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+RUN pip3 install --upgrade pip && pip install --no-cache-dir -r requirements.txt && pip install numpy -I
 
 # Expose port 5000 for the Flask application
 EXPOSE 5000

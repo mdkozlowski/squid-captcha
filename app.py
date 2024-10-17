@@ -1,7 +1,8 @@
+import os
 import random
 
 from flask import Flask, request, jsonify, render_template
-from make_captcha.math import validate, get_all_steps
+from make_captcha.generate import validate, get_all_steps
 
 app = Flask(__name__)
 
@@ -38,4 +39,7 @@ def secret():
 
 
 if __name__ == '__main__':
-	app.run(debug=False)
+	port = int(os.environ.get('FLASK_PORT', 5000))
+	host = os.environ.get('FLASK_HOST', "0.0.0.0")
+
+	app.run(debug=True, host=host, port=port)
