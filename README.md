@@ -12,24 +12,12 @@ Open `localhost:5000`
 
 ## Installation
 
-### Python virtualenv
-
-Requires `python>=3.10, <3.14`
-
-```commandline
-python -m pip install -r requirements.txt
-python -m pip install numpy -I
-python app.py
-```
-
-or
-
 ### Docker
-
+Build locally:
 ```commandline
 docker build -t squid-captcha:1.0 .
 ```
-or, use a pre-built image:
+Pre-built image:
 ```commandline
 docker pull naarkie/squid-captcha:1.0
 ```
@@ -37,8 +25,18 @@ docker pull naarkie/squid-captcha:1.0
 ```commandline
 docker run --rm -it -p 5000:5000 --name squid-captcha squid-captcha:1.0
 ```
+------
+or,
+### Python virtualenv
 
-or 
+Requires `python>=3.10, <3.14`
+
+```commandline
+pip install --no-cache-dir -r requirements.txt
+python app.py
+```
+------
+or,
 
 ### Pyinstaller binary
 There's no way this works anywhere other than on my own PC but apparently there's supposed to be a prebuilt windows binary
